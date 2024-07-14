@@ -57,4 +57,7 @@ async function getCity() {
         console.log(result.country);
         console.log(result.name);
     });
+    let city = responseAsJson.results.find(city => city.id == 730712);
+    let longitude = city.longitude;
+    let latitude = city.latitude;
 }
