@@ -145,7 +145,7 @@ function calculateMeltingTime(currentTemp) {
 
 async function getCity() {
     let inputSearch = document.querySelector('.input_search').value;
-    let response = await fetch('./js/responseCitySearch.json');
+    let response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${inputSearch}&count=10&language=en&format=json`);
     let responseAsJson = await response.json();
     let searchResult = document.querySelector('.search_result');
     searchResult.innerHTML = '';
