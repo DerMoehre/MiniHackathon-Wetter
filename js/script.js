@@ -27,7 +27,26 @@ function renderCurrentWeather() {
     let weatherInfo = document.querySelector('.weather_info');
     let index = currentWeatherData.weather_code;
     let path = getRightPath(index);
-    weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData, index, path);
+    let weatherPath = proveCurrentTemperature(currentWeatherData.temperature_2m);
+    let timeLeft = Math.round(calculateMeltingTime(currentWeatherData.temperature_2m));
+    let temperatureText = generateTemperatureText(currentWeatherData.temperature_2m, timeLeft);
+    weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData, index, path, weatherPath, temperatureText);
+}
+
+function proveCurrentTemperature(temperature) {
+    if(temperature > 10) {
+        return path = 'img/ice_sweet_icon.svg';
+    } else {
+        return path = 'img/coffee_cup_icon.svg';
+    }
+}
+
+function generateTemperatureText(temperature, timeLeft) {
+    if(temperature > 10) {
+        return `Quick! You have ${timeLeft} minutes to savor your ice cream before it becomes a puddle!"`;
+    } else {
+        return `Sip swiftly! Your drink will chill in ${timeLeft} minutes!`;
+    }
 }
 
 function getForecast() {
@@ -36,9 +55,7 @@ function getForecast() {
     let temperature = dailyWeatherData.temperature_2m_max;
     let dates = dailyWeatherData.time;
     let codes = dailyWeatherData.weather_code;
-    dates.shift();
-    temperature.shift();
-    codes.shift();
+    removeFirstElement(dates, temperature, codes);
     dates.forEach((date, index) => {
         let d = new Date(date);
         let day = getWeekday(d.getDay());
@@ -46,6 +63,12 @@ function getForecast() {
         let path = getRightPath(code);
         renderForecast(day, temperature[index], path);
     });
+}
+
+function removeFirstElement(array1, array2, array3) {
+    array1.shift();
+    array2.shift();
+    array3.shift();
 }
 
 function renderForecast(day, temperature, path) {
@@ -124,11 +147,12 @@ async function getCity() {
     let inputSearch = document.querySelector('.input_search').value;
     let response = await fetch('./js/responseCitySearch.json');
     let responseAsJson = await response.json();
+    let searchResult = document.querySelector('.search_result');
+    searchResult.innerHTML = '';
     responseAsJson.results.forEach(result => {
-        console.log(result.id);
-        console.log(result.country);
-        console.log(result.name);
+        searchResult.innerHTML += generateResultsInnerHTML(result);
     });
+    showStatChart();
 }
 
 function getCityPosition(cityArray, id) {
