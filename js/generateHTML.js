@@ -15,7 +15,7 @@ function generateCurrentWeatherInnerHTML(info, index, path) {
                     </div>
                     <div class="bottom_left_part">
                         <div class="temperature_graph">
-                            <canvas>
+                            <canvas id="temperatureChart" width="600" height="400">
 
                             </canvas>
                         </div>
