@@ -18,9 +18,7 @@ async function loadData() {
     responseWeatherCodeJson = await responseWeatherCode.json();
     currentWeatherData =  responseAsJson.current;
     hourlyWeatherData = responseAsJson.hourly;
-    dailyWeatherData = responseAsJson.daily;
-
-    
+    dailyWeatherData = responseAsJson.daily;  
 }
 
 function renderCurrentWeather() {
@@ -30,6 +28,7 @@ function renderCurrentWeather() {
     let weatherPath = proveCurrentTemperature(currentWeatherData.temperature_2m);
     let timeLeft = Math.round(calculateMeltingTime(currentWeatherData.temperature_2m));
     let temperatureText = generateTemperatureText(currentWeatherData.temperature_2m, timeLeft);
+    weatherInfo.innerHTML = '';
     weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData, index, path, weatherPath, temperatureText);
 }
 
@@ -43,7 +42,7 @@ function proveCurrentTemperature(temperature) {
 
 function generateTemperatureText(temperature, timeLeft) {
     if(temperature > 10) {
-        return `Quick! You have ${timeLeft} minutes to savor your ice cream before it becomes a puddle!"`;
+        return `Quick! You have ${timeLeft} minutes to savor your ice cream before it becomes a puddle!`;
     } else {
         return `Sip swiftly! Your drink will chill in ${timeLeft} minutes!`;
     }
@@ -152,13 +151,20 @@ async function getCity() {
     responseAsJson.results.forEach(result => {
         searchResult.innerHTML += generateResultsInnerHTML(result);
     });
-    showStatChart();
 }
 
-function getCityPosition(cityArray, id) {
-    let city = cityArray.results.find(city => city.id == id);
-    let longitude = city.longitude;
-    let latitude = city.latitude;
+async function getCityPosition(latitude, longitude) {
+    let response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,is_day,weather_code&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,sunrise,sunset`);
+    let responseAsJson = await response.json();
+    console.log(responseAsJson);
+/*     responseWeatherCodeJson = await responseWeatherCode.json(); */
+    currentWeatherData =  responseAsJson.current;
+    hourlyWeatherData = responseAsJson.hourly;
+    dailyWeatherData = responseAsJson.daily; 
+    renderCurrentWeather();
+    showCurrentDate();
+    getForecast();
+    showWeatherChart(); 
 }
 
 
