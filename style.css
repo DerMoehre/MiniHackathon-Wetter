@@ -67,12 +67,29 @@
     height: 32px;
 }
 
+.search_result {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex-wrap: wrap;
+    height: 100px;
+}
+
+.text_result {
+    font-size: 24px;
+    filter: drop-shadow(2px 2px black);
+}
+
+.text_result:hover {
+    color: grey;
+    filter: unset;
+}
+
 .weather_info {
     border: 1px solid white;
     border-radius: 8px;
     display: flex;
     width: 100%;
-/*     flex: 1; */
     backdrop-filter: blur(10px);
 }
 
@@ -88,6 +105,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    gap: 24px;
 }
 
 .city_temperature {
@@ -104,10 +122,12 @@
 
 h3 {
     font-size: 56px;
+    filter: drop-shadow(2px 2px black);
 }
 
 .text_temperature_date {
     font-size: 40px;
+    filter: drop-shadow(2px 2px black);
 }
 
 .seperator_line {
@@ -120,11 +140,15 @@ h3 {
     display: flex;
     align-items: center;
     width: fit-content;
+    gap: 16px;
+    max-width: 500px;
+    
 }
 
 .text_quote {
     font-size: 24px;
     font-weight: 300;
+    filter: drop-shadow(2px 2px black);
 }
 
 canvas {
@@ -164,6 +188,7 @@ table {
 
 td {
     padding-top: 24px;
+    filter: drop-shadow(2px 2px black);
 }
 
 .weather_icon_table {

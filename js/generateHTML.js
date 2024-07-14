@@ -1,4 +1,4 @@
-function generateCurrentWeatherInnerHTML(info, index, path) {
+function generateCurrentWeatherInnerHTML(info, index, path, weatherPath, temperatureText) {
     return /* HTML */ `
                 <div class="left_part">
                     <div class="upper_left_part">
@@ -9,8 +9,8 @@ function generateCurrentWeatherInnerHTML(info, index, path) {
                         </div>
                         <div class="seperator_line"></div>
                         <div class="temperature_quote">
-                            <img class="ice_icon filter_white" src="img/ice_sweet_icon.svg" alt="ice icon">
-                            <p class="text_quote">Vorsicht, dein Eis schmilzt</p>
+                            <img class="ice_icon filter_white" src=${weatherPath} alt="ice icon">
+                            <p class="text_quote">${temperatureText}</p>
                         </div>
                     </div>
                     <div class="bottom_left_part">
@@ -48,4 +48,9 @@ function generateTableInnerHTML(day, temperature, path) {
              <td><img class="weather_icon_table filter_white" src=${path} alt=""></td>
              <td>${temperature} °C</td>
          </tr>`;
+}
+
+function generateResultsInnerHTML(result) {
+    return /* HTML */ `
+        <p onclick=test(${result.id}) class="pointer text_result">${result.name}, ${result.country}</p>`;
 }
