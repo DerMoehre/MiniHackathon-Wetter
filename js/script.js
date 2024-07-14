@@ -41,4 +41,27 @@ function showCurrentDate() {
     currentDate.innerHTML = generateCurrentDateInnerHMTL(date);
 }
 
+function heatingTheIce(weightIce, temperatureIce) {
+    return (weightIce * 2.1 *(0-temperatureIce))*1000;
+}
+
+function meltingTheIce(weightIce) {
+    return weightIce * 334000;
+}
+
+function heatFlow(currentTemp, temperatureIce, surfaceIce, heatTransferCoefficient) {
+    return heatTransferCoefficient * surfaceIce * (currentTemp - temperatureIce)
+}
+
+function calculateMeltingTime(currentTemp) {
+    heatTransferCoefficient = 10;
+    surfaceIce = 0.00824;
+    temperatureIce = -13;
+    weightIce = 0.08;
+
+    energyConsumption = heatingTheIce(weightIce, temperatureIce) + meltingTheIce(weightIce);
+    timeNeeded = (energyConsumption/heatFlow(currentTemp, temperatureIce, surfaceIce, heatTransferCoefficient))/60
+
+    return timeNeeded;
+}
 
