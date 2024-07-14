@@ -40,9 +40,9 @@ function proveCurrentTemperature(temperature) {
 
 function generateTemperatureText(temperature, timeLeft) {
     if(temperature > 10) {
-        return `Beeilung, dir bleiben nur noch ${timeLeft} Minuten, bevor dein Eis schmilzt!`;
+        return `Quick! You have ${timeLeft} minutes to savor your ice cream before it becomes a puddle!"`;
     } else {
-        return `Beeilung, dir bleiben nur noch ${timeLeft} Minuten, bevor dein Getränk kalt wird!`;
+        return `Sip swiftly! Your drink will chill in ${timeLeft} minutes!`;
     }
 }
 
