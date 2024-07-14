@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     color: white;
+    font-family: 'Quicksand';
 }
 
 body {
@@ -73,7 +74,7 @@ body {
 .upper_left_part {
     display: flex;
     border: 1px solid blue;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -86,6 +87,12 @@ body {
 
 h3 {
     font-size: 48px;
+}
+
+.seperator_line {
+    width: 3px;
+    height: 100%;
+    background-color: white;
 }
 
 .temperature_quote {
