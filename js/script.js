@@ -20,21 +20,16 @@ async function loadData() {
 function renderCurrentWeather() {
     let weatherInfo = document.querySelector('.weather_info');
     let index = currentWeatherData.weather_code;
-    let dayStatus = currentWeatherData.is_day;
-    if(dayStatus == 1) {
-        path = responseWeatherCodeJson[index].pathDay;
-    } else {
-        path = responseWeatherCodeJson[index].pathNight;
-    }
+    let path = getRightPath(index);
     weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData, index, path);
 }
 
 function getRightPath(index) {
     let dayStatus = currentWeatherData.is_day;
     if(dayStatus == 1) {
-        path = responseWeatherCodeJson[index].pathDay;
+        return responseWeatherCodeJson[index].pathDay;
     } else {
-        path = responseWeatherCodeJson[index].pathNight;
+        return responseWeatherCodeJson[index].pathNight;
     }
 }
 
