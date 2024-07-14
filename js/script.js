@@ -1,7 +1,5 @@
 let currentWeatherData;
 let responseWeatherCodeJson;
-let path;
-
 
 async function init() {
     await loadData();
