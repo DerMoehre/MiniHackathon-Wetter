@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="fonts.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="init()">
     <div class="max_width">
         <div class="main_container">
             <div class="search_container">
@@ -19,7 +19,7 @@
                     <div class="upper_left_part">
                         <div class="city_temperature">
                             <h3>Kamen</h3>
-                            <p class="text_temperature">24 °C</p>
+                            <p class="text_temperature_date">24 °C</p>
                         </div>
                         <div class="seperator_line"></div>
                         <div class="temperature_quote">
@@ -34,6 +34,9 @@
                     </div>
                 </div>
                 <div class="right_part">
+                    <div class="current_date">
+   
+                    </div>
                     <div class="forecast_days">
                         <table>
                             <tbody>
@@ -79,6 +82,6 @@
             </div>
         </div>    
     </div>
-
+<script src="script.js"></script>
 </body>
 </html>
