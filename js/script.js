@@ -21,6 +21,8 @@ function generateCurrentDateInnerHMTL(date) {
         <p class="text_temperature_date">${date}</p>`;
 }
 
+
+// <----------- calculating ice melt --------------->
 function heatingTheIce(weightIce, temperatureIce) {
     return (weightIce * 2.1 *(0-temperatureIce))*1000;
 }
@@ -43,4 +45,10 @@ function calculateMeltingTime(currentTemp) {
     timeNeeded = (energyConsumption/heatFlow(currentTemp, temperatureIce, surfaceIce, heatTransferCoefficient))/60
 
     return timeNeeded;
+}
+// <---------------------------------------------->
+
+function getCity() {
+    let inputSearch = document.querySelector('.input_search').value;
+    console.log(inputSearch);
 }
