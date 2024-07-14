@@ -1,10 +1,13 @@
 let currentWeatherData;
+let dailyWeatherData;
+let hourlyWeatherData;
 let responseWeatherCodeJson;
 
 async function init() {
     await loadData();
     renderCurrentWeather();
     showCurrentDate();
+    getForecast();
 }
 
 async function loadData() {
@@ -13,6 +16,8 @@ async function loadData() {
     let responseAsJson = await response.json();
     responseWeatherCodeJson = await responseWeatherCode.json();
     currentWeatherData =  responseAsJson.current;
+    hourlyWeatherData = responseAsJson.hourly;
+    dailyWeatherData = responseAsJson.daily;
 }
 
 function renderCurrentWeather() {
@@ -22,12 +27,57 @@ function renderCurrentWeather() {
     weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData, index, path);
 }
 
+function getForecast() {
+    let tbodyForecast = document.querySelector('.tbody_forecast');
+    tbodyForecast.innerHTML = '';
+    let temperature = dailyWeatherData.temperature_2m_max;
+    let dates = dailyWeatherData.time;
+    let codes = dailyWeatherData.weather_code;
+    dates.shift();
+    temperature.shift();
+    codes.shift();
+    console.log(codes);
+    dates.forEach((date, index) => {
+        let d = new Date(date);
+        let day = getWeekday(d.getDay());
+        let code = codes[index];
+        let path = getRightPath(code);
+        renderForecast(day, temperature[index], path);
+    });
+}
+
+function renderForecast(day, temperature, path) {
+    let tbodyForecast = document.querySelector('.tbody_forecast');
+    tbodyForecast.innerHTML += generateTableInnerHTML(day, temperature, path);
+}
+
 function getRightPath(index) {
-    let dayStatus = currentWeatherData.is_day;
+    let dayStatus = 1;
+    if(typeof currentWeatherData.is_day !== 'undefined') {
+        dayStatus = currentWeatherData.is_day;
+    }
     if(dayStatus == 1) {
         return responseWeatherCodeJson[index].pathDay;
     } else {
         return responseWeatherCodeJson[index].pathNight;
+    }
+}
+
+function getWeekday(time) {
+    if(time == 0) {
+        return "SUN"
+    } else if (time == 1) {
+        return "MON"
+    } else if(time == 2) {
+        return "TUE"
+    } else if(time == 3) {
+        return "WED"
+    } else if(time == 4) {
+        return "THU"
+    } else if(time == 5) {
+        return "FRI"
+    } else {
+        return "SAT"
     }
 }
 

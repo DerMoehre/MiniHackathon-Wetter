@@ -26,43 +26,9 @@ function generateCurrentWeatherInnerHTML(info, index, path) {
    
                     </div>
                     <div class="forecast_days">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>MON</td>
-                                    <td><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
-                                <tr>
-                                    <td>TUE</td>
-                                    <td class="img_table"><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
-                                <tr>
-                                    <td>WED</td>
-                                    <td><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
-                                <tr>
-                                    <td>THU</td>
-                                    <td><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
-                                <tr>
-                                    <td>FRI</td>
-                                    <td><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
-                                <tr>
-                                    <td>SAT</td>
-                                    <td><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
-                                <tr>
-                                    <td>SUN</td>
-                                    <td><img class="weather_icon_table filter_white" src="img/weather_icons/wi-day-sunny.svg" alt=""></td>
-                                    <td>20 °C</td>
-                                </tr>
+                        <table class="table_forecast">
+                            <tbody class="tbody_forecast">
+
                             </tbody>
                         </table>
                     </div>
@@ -73,4 +39,13 @@ function generateCurrentDateInnerHMTL(date) {
     return /* HTML */ `
         <h3>Current Date</h3>
         <p class="text_temperature_date">${date}</p>`;
+}
+
+function generateTableInnerHTML(day, temperature, path) {
+    return /* HTML */ `
+         <tr>
+             <td>${day}</td>
+             <td><img class="weather_icon_table filter_white" src=${path} alt=""></td>
+             <td>${temperature} °C</td>
+         </tr>`;
 }
