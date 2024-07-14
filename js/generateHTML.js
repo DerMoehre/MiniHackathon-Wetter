@@ -52,5 +52,5 @@ function generateTableInnerHTML(day, temperature, path) {
 
 function generateResultsInnerHTML(result) {
     return /* HTML */ `
-        <p onclick=test(${result.id}) class="pointer text_result">${result.name}, ${result.country}</p>`;
+        <p onclick="getCityPosition(${result.longitude}, ${result.latitude})" class="pointer text_result">${result.name}, ${result.country}</p>`;
 }
