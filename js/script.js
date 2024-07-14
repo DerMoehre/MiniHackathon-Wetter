@@ -36,9 +36,9 @@ function heatFlow(currentTemp, temperatureIce, surfaceIce, heatTransferCoefficie
 }
 
 function calculateMeltingTime(currentTemp) {
-    heatTransferCoefficient = 10;
-    surfaceIce = 0.00824;
-    temperatureIce = -13;
+    heatTransferCoefficient = 30;
+    surfaceIce = 0.01624;
+    temperatureIce = -15;
     weightIce = 0.08;
 
     energyConsumption = heatingTheIce(weightIce, temperatureIce) + meltingTheIce(weightIce);
@@ -48,7 +48,13 @@ function calculateMeltingTime(currentTemp) {
 }
 // <---------------------------------------------->
 
-function getCity() {
+async function getCity() {
     let inputSearch = document.querySelector('.input_search').value;
-    console.log(inputSearch);
+    let response = await fetch('./js/responseCitySearch.json');
+    let responseAsJson = await response.json();
+    responseAsJson.results.forEach(result => {
+        console.log(result.id);
+        console.log(result.country);
+        console.log(result.name);
+    });
 }
