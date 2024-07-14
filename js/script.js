@@ -156,8 +156,6 @@ async function getCity() {
 async function getCityPosition(latitude, longitude) {
     let response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,is_day,weather_code&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,sunrise,sunset`);
     let responseAsJson = await response.json();
-    console.log(responseAsJson);
-/*     responseWeatherCodeJson = await responseWeatherCode.json(); */
     currentWeatherData =  responseAsJson.current;
     hourlyWeatherData = responseAsJson.hourly;
     dailyWeatherData = responseAsJson.daily; 
@@ -165,6 +163,8 @@ async function getCityPosition(latitude, longitude) {
     showCurrentDate();
     getForecast();
     showWeatherChart(); 
+    let searchResult = document.querySelector('.search_result');
+    searchResult.innerHTML = '';
 }
 
 
