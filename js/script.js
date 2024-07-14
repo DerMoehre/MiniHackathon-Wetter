@@ -8,6 +8,7 @@ async function init() {
     renderCurrentWeather();
     showCurrentDate();
     getForecast();
+    showWeatherChart();
 }
 
 async function loadData() {
@@ -18,6 +19,8 @@ async function loadData() {
     currentWeatherData =  responseAsJson.current;
     hourlyWeatherData = responseAsJson.hourly;
     dailyWeatherData = responseAsJson.daily;
+
+    
 }
 
 function renderCurrentWeather() {
@@ -158,3 +161,69 @@ function getCityPosition(cityArray, id) {
     let latitude = city.latitude;
 }
 
+
+function showWeatherChart() {
+    let ctx = document.getElementById('temperatureChart').getContext('2d');
+    Chart.defaults.font.size = 16;
+    Chart.defaults.color = '#ffffff';
+    Chart.defaults.font.family = "'Quicksand', sansr-serif";
+    Chart.defaults.plugins.legend.display = false;
+    Chart.defaults.plugins.tooltip.enabled = true;
+    barStats = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: hourlyWeatherData.time,
+            datasets: [{
+                axis: 'y',
+                data: hourlyWeatherData.temperature_2m,
+                fill: true,
+                backgroundColor: [
+                    'rgba(4,3,7, 0.2)',
+                ],
+                borderColor: [
+                    'rgb(4,3,7)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            elements: {
+                point: {
+                    radius: 0
+                },
+            },
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        tooltipFormat: 'MM/dd HH:mm',
+                        displayFormats: {
+                            day: 'MM/dd'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Temperature (°C)'
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return 'Temperature: ' + tooltipItem.parsed.y + ' °C';
+                        }
+                    }
+                }
+            }
+        }
+    })
+};
