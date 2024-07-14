@@ -57,7 +57,10 @@ async function getCity() {
         console.log(result.country);
         console.log(result.name);
     });
-    let city = responseAsJson.results.find(city => city.id == 730712);
+}
+
+function getCityPosition(cityArray, id) {
+    let city = cityArray.results.find(city => city.id == id);
     let longitude = city.longitude;
     let latitude = city.latitude;
 }
