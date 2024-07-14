@@ -1,0 +1,142 @@
+{
+    "0": {
+        "description": "Clear sky",
+        "pathDay": "img/weather_icons/wi-day-sunny.svg",
+        "pathNight": "img/weather_icons/wi-night-clear.svg"
+    },
+    "1": {
+        "description": "Mainly clear",
+        "pathDay": "img/weather_icons/wi-day-sunny-overcast.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-partly-cloudy.svg"
+    },
+    "2": {
+        "description": "Partly cloudy",
+        "pathDay": "img/weather_icons/wi-day-cloudy.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-cloudy.svg"
+    },
+    "3": {
+        "description": "Overcast",
+        "pathDay": "img/weather_icons/wi-cloudy.svg",
+        "pathNight": "img/weather_icons/wi-night-cloudy.svg"
+    },
+    "45": {
+        "description": "Fog",
+        "pathDay": "img/weather_icons/wi-day-fog.svg",
+        "pathNight": "img/weather_icons/wi-night-fog.svg"
+    },
+    "48": {
+        "description": "Depositing rime fog",
+        "pathDay": "img/weather_icons/wi-day-fog.svg",
+        "pathNight": "img/weather_icons/wi-night-fog.svg"
+    },
+    "51": {
+        "description": "Drizzle: Light intensity",
+        "pathDay": "img/weather_icons/wi-day-sprinkle.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-sprinkle.svg"
+    },
+    "53": {
+        "description": "Drizzle: Moderate intensity",
+        "pathDay": "img/weather_icons/wi-day-rain-mix.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-rain-mix.svg"
+    },
+    "55": {
+        "description": "Drizzle: Dense intensity",
+        "pathDay": "img/weather_icons/wi-day-rain.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-rain.svg"
+    },
+    "56": {
+        "description": "Freezing Drizzle: Light intensity",
+        "pathDay": "img/weather_icons/wi-day-rain-mix.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-rain-mix.svg"
+    },
+    "57": {
+        "description": "Freezing Drizzle: Dense intensity",
+        "pathDay": "img/weather_icons/wi-day-rain.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-rain.svg"
+    },
+    "61": {
+        "description": "Rain: Slight intensity",
+        "pathDay": "img/weather_icons/wi-day-rain.svg",
+        "pathNight": "img/weather_icons/wi-night-rain.svg"
+    },
+    "63": {
+        "description": "Rain: Moderate intensity",
+        "pathDay": "img/weather_icons/wi-day-rain-wind.svg",
+        "pathNight": "img/weather_icons/wi-night-rain-wind.svg"
+    },
+    "65": {
+        "description": "Rain: Heavy intensity",
+        "pathDay": "img/weather_icons/wi-day-rain-wind.svg",
+        "pathNight": "img/weather_icons/wi-night-rain-wind.svg"
+    },
+    "66": {
+        "description": "Freezing Rain: Light intensity",
+        "pathDay": "img/weather_icons/wi-day-rain-mix.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-rain-mix.svg"
+    },
+    "67": {
+        "description": "Freezing Rain: Heavy intensity",
+        "pathDay": "img/weather_icons/wi-day-rain.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-rain.svg"
+    },
+    "71": {
+        "description": "Snow fall: Slight intensity",
+        "pathDay": "img/weather_icons/wi-day-snow.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-snow.svg"
+    },
+    "73": {
+        "description": "Snow fall: Moderate intensity",
+        "pathDay": "img/weather_icons/wi-day-snow.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-snow.svg"
+    },
+    "75": {
+        "description": "Snow fall: Heavy intensity",
+        "pathDay": "img/weather_icons/wi-day-snow.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-snow.svg"
+    },
+    "77": {
+        "description": "Snow grains",
+        "pathDay": "img/weather_icons/wi-day-snow.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-snow.svg"
+    },
+    "80": {
+        "description": "Rain showers: Slight intensity",
+        "pathDay": "img/weather_icons/wi-day-showers.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-showers.svg"
+    },
+    "81": {
+        "description": "Rain showers: Moderate intensity",
+        "pathDay": "img/weather_icons/wi-day-showers.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-showers.svg"
+    },
+    "82": {
+        "description": "Rain showers: Violent intensity",
+        "pathDay": "img/weather_icons/wi-day-storm-showers.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-storm-showers.svg"
+    },
+    "85": {
+        "description": "Snow showers slight",
+        "pathDay": "img/weather_icons/wi-day-snow.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-snow.svg"
+    },
+    "86": {
+        "description": "Snow showers heavy",
+        "pathDay": "img/weather_icons/wi-day-snow-wind.svg",
+        "pathNight": "img/weather_icons/wi-night-alt-snow-wind.svg"
+    },
+    "95": {
+        "description": "Thunderstorm: Slight or moderate",
+        "pathDay": "img/weather_icons/wi-day-thunderstorm.svg",
+        "pathNight": "img/weather_icons/wi-night-thunderstorm.svg"
+    },
+    "96": {
+        "description": "Thunderstorm with slight hail",
+        "pathDay": "img/weather_icons/wi-day-thunderstorm.svg",
+        "pathNight": "img/weather_icons/wi-night-thunderstorm.svg"
+    },
+    "99": {
+        "description": "Thunderstorm with heavy hail",
+        "pathDay": "img/weather_icons/wi-day-thunderstorm.svg",
+        "pathNight": "img/weather_icons/wi-night-thunderstorm.svg"
+    }
+}
