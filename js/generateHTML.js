@@ -1,9 +1,9 @@
-function generateCurrentWeatherInnerHTML(info, index, path, weatherPath, temperatureText) {
+function generateCurrentWeatherInnerHTML(info, path, weatherPath, temperatureText, name) {
     return /* HTML */ `
                 <div class="left_part">
                     <div class="upper_left_part">
                         <div class="city_temperature">
-                            <h3>Kamen</h3>
+                            <h3>${name}</h3>
                             <img class="filter_white upper_part_img" src=${path} alt="">
                             <p class="text_temperature_date">${info.temperature_2m} °C</p>
                         </div>
@@ -51,6 +51,7 @@ function generateTableInnerHTML(day, temperature, path) {
 }
 
 function generateResultsInnerHTML(result) {
+    let escapedName = escapeString(result.name);
     return /* HTML */ `
-        <p onclick="getCityPosition(${result.longitude}, ${result.latitude})" class="pointer text_result">${result.name}, ${result.country}</p>`;
+        <p onclick="getCityPosition(${result.longitude}, ${result.latitude}, '${escapedName}')" class="pointer text_result">${result.name}, ${result.country}</p>`;
 }

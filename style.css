@@ -123,6 +123,7 @@
 h3 {
     font-size: 56px;
     filter: drop-shadow(2px 2px black);
+    text-align: center;
 }
 
 .text_temperature_date {
@@ -193,4 +194,25 @@ td {
 .weather_icon_table {
     width: 56px;
     height: 56px;
+}
+
+@media(max-width: 1200px) {
+    .main_container {
+        height: unset;
+    }
+    .search_result {
+        height: 300px;
+    }
+    .weather_info {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+    }
+    .left_part,
+    .right_part {
+        width: 100%;
+    }
+    .temperature_quote {
+        max-width: 300px;
+    }
 }
