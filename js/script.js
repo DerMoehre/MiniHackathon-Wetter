@@ -4,24 +4,30 @@ let hourlyWeatherData;
 let responseWeatherCodeJson;
 
 async function init() {
-    await loadData();
-    renderCurrentWeather();
+    await loadWeatherCodeData();
+    if (document.querySelector('.input_search').value === '') {
+        await loadDefaultData();  
+    }
     showCurrentDate();
+}
+
+async function loadWeatherCodeData() {
+    let responseWeatherCode = await fetch('./js/weatherCode.json');
+    responseWeatherCodeJson = await responseWeatherCode.json();
+}
+
+async function loadDefaultData() {
+    let response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=52.52437&longitude=13.41053&current=temperature_2m,apparent_temperature,is_day,weather_code&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,sunrise,sunset`);
+    let responseAsJson = await response.json();
+    currentWeatherData = responseAsJson.current;
+    hourlyWeatherData = responseAsJson.hourly;
+    dailyWeatherData = responseAsJson.daily;
+    renderCurrentWeather('Berlin');
     getForecast();
     showWeatherChart();
 }
 
-async function loadData() {
-    let response = await fetch('./js/responseKamen.json');
-    let responseWeatherCode = await fetch('./js/weatherCode.json');
-    let responseAsJson = await response.json();
-    responseWeatherCodeJson = await responseWeatherCode.json();
-    currentWeatherData =  responseAsJson.current;
-    hourlyWeatherData = responseAsJson.hourly;
-    dailyWeatherData = responseAsJson.daily;  
-}
-
-function renderCurrentWeather() {
+function renderCurrentWeather(name) {
     let weatherInfo = document.querySelector('.weather_info');
     let index = currentWeatherData.weather_code;
     let path = getRightPath(index);
@@ -29,7 +35,7 @@ function renderCurrentWeather() {
     let timeLeft = Math.round(calculateMeltingTime(currentWeatherData.temperature_2m));
     let temperatureText = generateTemperatureText(currentWeatherData.temperature_2m, timeLeft);
     weatherInfo.innerHTML = '';
-    weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData, index, path, weatherPath, temperatureText);
+    weatherInfo.innerHTML += generateCurrentWeatherInnerHTML(currentWeatherData,path, weatherPath, temperatureText, name);
 }
 
 function proveCurrentTemperature(temperature) {
@@ -149,24 +155,29 @@ async function getCity() {
     let searchResult = document.querySelector('.search_result');
     searchResult.innerHTML = '';
     responseAsJson.results.forEach(result => {
+        console.log(result);
         searchResult.innerHTML += generateResultsInnerHTML(result);
     });
 }
 
-async function getCityPosition(latitude, longitude) {
+async function getCityPosition(latitude, longitude, name) {
     let response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,is_day,weather_code&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,sunrise,sunset`);
     let responseAsJson = await response.json();
     currentWeatherData =  responseAsJson.current;
     hourlyWeatherData = responseAsJson.hourly;
     dailyWeatherData = responseAsJson.daily; 
-    renderCurrentWeather();
+    renderCurrentWeather(name);
     showCurrentDate();
     getForecast();
     showWeatherChart(); 
+    document.querySelector('.input_search').value = '';
     let searchResult = document.querySelector('.search_result');
     searchResult.innerHTML = '';
 }
 
+function escapeString(str) {
+    return str.replace(/'/g, "\\'");
+}
 
 function showWeatherChart() {
     let ctx = document.getElementById('temperatureChart').getContext('2d');
